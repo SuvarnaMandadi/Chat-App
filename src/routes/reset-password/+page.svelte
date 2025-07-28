@@ -1,20 +1,31 @@
 <script>
 	import { pb } from '$lib/pocketbase';
-	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	let password = '';
 	let confirm = '';
 	let error = '';
 	let success = '';
 	let loading = false;
+	let token = '';
 
-	$: token = $page.url.searchParams.get('token');
+	onMount(() => {
+		const params = new URLSearchParams(window.location.search);
+		token = params.get('token') || '';
+		console.log('Reset token:', token);
+	});
 
 	async function resetPassword() {
 		error = '';
 		success = '';
 		loading = true;
+
+		if (!token) {
+			error = 'Reset token is missing or invalid.';
+			loading = false;
+			return;
+		}
 
 		if (password.length < 8) {
 			error = 'Password must be at least 8 characters.';
@@ -52,7 +63,7 @@
 		{/if}
 
 		<form on:submit|preventDefault={resetPassword} class="form">
-			<input type="password" bind:value={password} placeholder="New Password" required autofocus />
+			<input type="password" bind:value={password} placeholder="New Password" required />
 			<input type="password" bind:value={confirm} placeholder="Confirm Password" required />
 			<button type="submit" disabled={loading}>
 				{#if loading}Resetting...{:else}Reset Password{/if}
