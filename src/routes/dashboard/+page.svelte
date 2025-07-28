@@ -123,7 +123,6 @@
 
 	<footer class="chat-input">
 		<button class="emoji-btn" on:click={togglePicker}>😊</button>
-
 		{#if showPicker}
 			<emoji-picker bind:this={pickerEl}></emoji-picker>
 		{/if}
@@ -144,18 +143,15 @@
 	.chat-container {
 		display: flex;
 		flex-direction: column;
-		height: 100vh;
-		background: #f9f9f9;
+		height: 100dvh;
+		overflow: hidden;
 		font-family: 'Segoe UI', sans-serif;
-		padding: 0;
-		margin: 0;
-		box-sizing: border-box;
 	}
 
 	.chat-header {
 		background: #2e3a59;
 		color: #fff;
-		padding: 1rem 2rem;
+		padding: 1rem;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -188,12 +184,6 @@
 		background-color: #2e3a59;
 	}
 
-	.chat-message-row {
-		display: flex;
-		align-items: flex-start;
-		gap: 0.75rem;
-	}
-
 	.chat-header h2 {
 		margin: 0;
 		font-size: 1rem;
@@ -218,11 +208,17 @@
 	.chat-messages {
 		flex: 1;
 		overflow-y: auto;
-		padding: 1rem 2rem;
+		padding: 1rem;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
 		scroll-behavior: smooth;
+	}
+
+	.chat-message-row {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
 	}
 
 	.chat-message {
@@ -255,10 +251,13 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 1rem 2rem;
+		padding: 1rem;
 		background: #fff;
 		border-top: 1px solid #ddd;
-		position: relative;
+		position: sticky;
+		bottom: 0;
+		width: 100%;
+		flex-wrap: nowrap;
 	}
 
 	.chat-input input {
@@ -295,7 +294,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		transition: background-color 0.3s;
 	}
 
 	.emoji-btn:hover {
@@ -313,49 +311,5 @@
 		width: 320px;
 		max-height: 400px;
 		overflow: hidden;
-	}
-	@media (max-width: 768px) {
-		.chat-header {
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 0.5rem;
-			padding: 1rem;
-		}
-
-		.chat-header h2 {
-			font-size: 1rem;
-			word-break: break-word;
-		}
-
-		.chat-messages {
-			padding: 1rem;
-		}
-
-		.chat-message {
-			max-width: 90%;
-		}
-
-		.chat-input {
-			flex-direction: column;
-			align-items: stretch;
-			gap: 0.75rem;
-			padding: 1rem;
-		}
-
-		.chat-input input {
-			width: 100%;
-		}
-
-		.chat-input button,
-		.emoji-btn {
-			width: 100%;
-			font-size: 1rem;
-			padding: 0.75rem;
-		}
-
-		emoji-picker {
-			left: 1rem;
-			width: 90%;
-		}
 	}
 </style>
