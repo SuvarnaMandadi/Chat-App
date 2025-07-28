@@ -256,8 +256,9 @@
 		border-top: 1px solid #ddd;
 		position: sticky;
 		bottom: 0;
-		width: 100%;
-		flex-wrap: nowrap;
+		left: 0;
+		right: 0;
+		z-index: 10;
 	}
 
 	.chat-input input {
@@ -269,12 +270,14 @@
 	}
 
 	.chat-input button {
+		white-space: nowrap;
 		background-color: #2e3a59;
 		color: white;
-		padding: 0.75rem 1.2rem;
+		padding: 0.75rem 1rem;
 		border: none;
 		border-radius: 6px;
 		cursor: pointer;
+		font-size: 1rem;
 		font-weight: bold;
 	}
 
