@@ -53,7 +53,6 @@
 		showPicker = !showPicker;
 	}
 
-	// Attach emoji handler every time pickerEl exists
 	$: if (showPicker && pickerEl && typeof window !== 'undefined') {
 		pickerEl.addEventListener('emoji-click', onEmojiClick);
 	}
@@ -108,6 +107,7 @@
 				<div class="chat-message">
 					<div class="meta">
 						<strong>{msg.expand?.author?.username || 'Unknown'}</strong>
+						&emsp;
 						<span
 							>{new Date(msg.created).toLocaleTimeString([], {
 								hour: '2-digit',
@@ -122,10 +122,8 @@
 	</main>
 
 	<footer class="chat-input">
-		<!-- Emoji Button -->
 		<button class="emoji-btn" on:click={togglePicker}>😊</button>
 
-		<!-- Emoji Picker -->
 		{#if showPicker}
 			<emoji-picker bind:this={pickerEl}></emoji-picker>
 		{/if}

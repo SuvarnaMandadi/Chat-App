@@ -7,7 +7,6 @@
 	export let data;
 	let user = data.user;
 
-	// React to auth changes (e.g. logout from another tab)
 	pb.authStore.onChange(() => {
 		user = pb.authStore.model;
 	});
@@ -16,7 +15,6 @@
 		pb.authStore.clear();
 		localStorage.removeItem('pb_auth');
 
-		// Delete cookie by setting an expired one
 		document.cookie = 'pb_auth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
 
 		goto('/login');
