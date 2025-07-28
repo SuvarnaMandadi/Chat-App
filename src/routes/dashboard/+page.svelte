@@ -147,6 +147,9 @@
 		height: 100vh;
 		background: #f9f9f9;
 		font-family: 'Segoe UI', sans-serif;
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
 	}
 
 	.chat-header {
@@ -310,5 +313,49 @@
 		width: 320px;
 		max-height: 400px;
 		overflow: hidden;
+	}
+	@media (max-width: 768px) {
+		.chat-header {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.5rem;
+			padding: 1rem;
+		}
+
+		.chat-header h2 {
+			font-size: 1rem;
+			word-break: break-word;
+		}
+
+		.chat-messages {
+			padding: 1rem;
+		}
+
+		.chat-message {
+			max-width: 90%;
+		}
+
+		.chat-input {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 0.75rem;
+			padding: 1rem;
+		}
+
+		.chat-input input {
+			width: 100%;
+		}
+
+		.chat-input button,
+		.emoji-btn {
+			width: 100%;
+			font-size: 1rem;
+			padding: 0.75rem;
+		}
+
+		emoji-picker {
+			left: 1rem;
+			width: 90%;
+		}
 	}
 </style>

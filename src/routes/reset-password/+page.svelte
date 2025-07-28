@@ -43,8 +43,8 @@
 			success = 'Password reset successfully!';
 			setTimeout(() => goto('/login'), 1500);
 		} catch (err) {
+			console.error('RESET ERROR', err);
 			error = err?.message || 'Reset failed.';
-			console.error(err);
 		} finally {
 			loading = false;
 		}
