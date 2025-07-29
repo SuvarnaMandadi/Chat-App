@@ -21,13 +21,4 @@
 	}
 </script>
 
-<nav>
-	{#if user && $page.url.pathname !== '/dashboard'}
-		<p>Welcome, {user.username}!</p>
-		<button on:click={logout}>Logout</button>
-	{:else if $page.url.pathname !== '/login'}
-		<!-- <a href="/login">Login</a> -->
-	{/if}
-</nav>
-
 <slot />

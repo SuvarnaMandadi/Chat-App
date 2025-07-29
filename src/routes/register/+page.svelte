@@ -61,6 +61,7 @@
 			}
 
 			await pb.collection('users').create(formData);
+			await pb.collection('users').requestVerification(email);
 			success = 'User registered successfully!';
 			setTimeout(() => goto('/login'), 1000);
 		} catch (err) {
